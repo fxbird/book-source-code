@@ -5,7 +5,6 @@ export enum MODES {
 }
 
 export class SharedState {
-
     constructor(public mode: MODES, public id?: number) { }
 }
 

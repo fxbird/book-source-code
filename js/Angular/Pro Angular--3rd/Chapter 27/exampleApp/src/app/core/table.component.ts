@@ -21,14 +21,12 @@ export class TableComponent {
     }
 
     getProducts(): Product[] {
-        return this.model.getProducts()
-            .filter(p => this.category == null || p.category == this.category);
+        return this.model.getProducts().filter(p => this.category == null || p.category == this.category);
     }
 
     get categories(): string[] {
-        return this.model.getProducts()
-            .map(p => p.category)
-            .filter((category, index, array) => array.indexOf(category) == index);
+        return this.model.getProducts().map(p => p.category)
+          .filter((category, index, array) => array.indexOf(category) == index);
     }
 
     deleteProduct(key: number) {

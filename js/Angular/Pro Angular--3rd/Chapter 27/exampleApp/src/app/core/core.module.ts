@@ -18,8 +18,7 @@ import { UnsavedGuard } from "./unsaved.guard";
 
 @NgModule({
     imports: [BrowserModule, FormsModule, ModelModule, MessageModule, RouterModule],
-    declarations: [TableComponent, FormComponent, StatePipe,
-        ProductCountComponent, CategoryCountComponent, NotFoundComponent],
+    declarations: [TableComponent, FormComponent, StatePipe, ProductCountComponent, CategoryCountComponent, NotFoundComponent],
     providers: [UnsavedGuard],
     exports: [ModelModule, TableComponent, FormComponent]
 })

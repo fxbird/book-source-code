@@ -1,28 +1,17 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-3">
-            <button class="btn btn-secondary btn-block"
-                    routerLink="/table" routerLinkActive="bg-primary"
-                    [routerLinkActiveOptions]="{exact: true}">
+            <button class="btn btn-secondary btn-block" routerLink="/table" routerLinkActive="bg-primary" [routerLinkActiveOptions]="{exact: true}">
                 All
             </button>
-            <button *ngFor="let category of categories" 
-                    class="btn btn-secondary btn-block"
-                    [routerLink]="['/table', category]" 
-                    routerLinkActive="bg-primary">
+            <button *ngFor="let category of categories" class="btn btn-secondary btn-block" [routerLink]="['/table', category]" routerLinkActive="bg-primary">
                 {{category}}
             </button>
         </div>
         <div class="col-9">
-            <button class="btn btn-info" routerLink="/table/products">
-                Count Products
-            </button>
-            <button class="btn btn-primary" routerLink="/table/categories">
-                Count Categories
-            </button>
-            <button class="btn btn-secondary" routerLink="/table">
-                Count Neither
-            </button>
+            <button class="btn btn-info" routerLink="/table/products">Count Products</button>
+            <button class="btn btn-primary" routerLink="/table/categories">Count Categories</button>
+            <button class="btn btn-secondary" routerLink="/table">Count Neither</button>
             <div class="my-2">
                 <router-outlet></router-outlet>
             </div>
@@ -42,31 +31,17 @@
                         {{item.price | currency:"USD" }}
                     </td>
                     <td class="text-center">
-                        <button class="btn btn-danger btn-sm"
-                                (click)="deleteProduct(item.id)">
-                            Delete
-                        </button>
-                        <button class="btn btn-warning btn-sm"
-                                [routerLink]="['/form', 'edit', item.id]">
-                            Edit
-                        </button>
+                        <button class="btn btn-danger btn-sm" (click)="deleteProduct(item.id)">Delete</button>
+                        <button class="btn btn-warning btn-sm" [routerLink]="['/form', 'edit', item.id]">Edit</button>
                     </td>
                 </tr>
             </table>
         </div>
         <div class="col-12 p-2 text-center">
-            <button class="btn btn-primary" routerLink="/form/create">
-                Create New Product
-            </button>
-            <button class="btn btn-danger" (click)="deleteProduct(-1)">
-                Generate HTTP Error
-            </button>
-            <button class="btn btn-danger" routerLink="/does/not/exist">
-                Generate Routing Error
-            </button>
-            <button class="btn btn-danger" routerLink="/ondemand">
-                Load Module
-            </button>
+            <button class="btn btn-primary" routerLink="/form/create">Create New Product</button>
+            <button class="btn btn-danger" (click)="deleteProduct(-1)">Generate HTTP Error</button>
+            <button class="btn btn-danger" routerLink="/does/not/exist">Generate Routing Error</button>
+            <button class="btn btn-danger" routerLink="/ondemand">Load Module</button>
         </div>
     </div>
 </div>
