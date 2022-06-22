@@ -9,11 +9,9 @@ import { Message } from "./messages/message.model";
 @Injectable()
 export class TermsGuard {
 
-    constructor(private messages: MessageService,
-        private router: Router) { }
+    constructor(private messages: MessageService, private router: Router) { }
 
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):
-        Promise<boolean> | boolean {
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> | boolean {
 
         if (route.params["mode"] == "create") {
 
@@ -23,19 +21,16 @@ export class TermsGuard {
                     ["No", () => resolve(false)]
                 ];
                 this.messages.reportMessage(
-                    new Message("Do you accept the terms & conditions?",
-                        false, responses));
+                    new Message("Do you accept the terms & conditions?",false, responses));
             });
         } else {
             return true;
         }
     }
 
-    canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):
-        Promise<boolean> | boolean {
+    canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> | boolean {
 
-        if (route.url.length > 0
-            && route.url[route.url.length - 1].path == "categories") {
+        if (route.url.length > 0 && route.url[route.url.length - 1].path == "categories") {
 
             return new Promise<boolean>((resolve, reject) => {
                 let responses: [string, (string) => void][] = [
@@ -44,8 +39,7 @@ export class TermsGuard {
                 ];
 
                 this.messages.reportMessage(
-                    new Message("Do you want to see the categories component?",
-                        false, responses));
+                    new Message("Do you want to see the categories component?",false, responses));
             });
         } else {
             return true;
