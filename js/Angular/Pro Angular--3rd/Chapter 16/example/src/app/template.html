@@ -1,27 +1,24 @@
 <style>
-  input.ng-dirty.ng-invalid {
-    border: 2px solid #ff0000
-  }
+    input.ng-dirty.ng-invalid { border: 2px solid #ff0000 }
+    input.ng-dirty.ng-valid { border: 2px solid #6bc502 }
 
-  input.ng-dirty.ng-valid {
-    border: 2px solid #6bc502
-  }
 </style>
 
 <div class="row m-2">
   <div class="col-4">
-    <form novalidate [formGroup]="form" (ngSubmit)="submitForm(form)">
-      <div class="form-group" *ngFor="let control of form.productControls">
+    <form (ngSubmit)="submitForm(form)" [formGroup]="form" novalidate>
+      <div *ngFor="let control of form.productControls" class="form-group">
         <label>{{control.label}}</label>
-        <input class="form-control" name="{{control.modelProperty}}" formControlName="{{control.modelProperty}}"/>
-        <ul class="text-danger list-unstyled" *ngIf="(formSubmitted || control.dirty) && !control.valid">
+        <input class="form-control" formControlName="{{control.modelProperty}}"
+               name="{{control.modelProperty}}"/>
+        <ul *ngIf="(formSubmitted || control.dirty) && !control.valid" class="text-danger list-unstyled">
           <li *ngFor="let error of control.getValidationMessages()">
             {{error}}
           </li>
         </ul>
       </div>
-      <button class="btn btn-primary" type="submit" [disabled]="formSubmitted && !form.valid"
-              [class.btn-secondary]="formSubmitted && !form.valid">
+      <button [class.btn-secondary]="formSubmitted && !form.valid" [disabled]="formSubmitted && !form.valid" class="btn btn-primary"
+              type="submit">
         Create
       </button>
     </form>
@@ -30,14 +27,14 @@
 
     <div class="checkbox">
       <label>
-        <input type="checkbox" [(ngModel)]="showTable"/>
+        <input [(ngModel)]="showTable" type="checkbox"/>
         Show Table
       </label>
     </div>
 
     <div class="checkbox">
       <label>
-        <input type="checkbox" [(ngModel)]="darkColor"/>
+        <input [(ngModel)]="darkColor" type="checkbox"/>
         Dark Cell Color
       </label>
     </div>
@@ -50,14 +47,13 @@
         <th>Price</th>
         <th></th>
       </tr>
-      <tr *paFor="let item of getProducts(); let i = index; let odd = odd;let even = even" [class.bg-info]="odd"
-          [class.bg-warning]="even">
+      <tr *paFor="let item of getProducts(); let i = index; let odd = odd;let even = even" [class.bg-info]="odd" [class.bg-warning]="even">
         <td style="vertical-align:middle">{{i + 1}}</td>
         <td style="vertical-align:middle">{{item.name}}</td>
         <td style="vertical-align:middle">{{item.category}}</td>
         <td style="vertical-align:middle">{{item.price}}</td>
         <td class="text-xs-center">
-          <button class="btn btn-danger btn-sm" (click)="deleteProduct(i)">
+          <button (click)="deleteProduct(i)" class="btn btn-danger btn-sm">
             Delete
           </button>
         </td>

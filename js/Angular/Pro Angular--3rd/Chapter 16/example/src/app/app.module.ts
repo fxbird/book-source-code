@@ -11,9 +11,7 @@ import {PaCellColorSwitcher} from "./cellColorSwitcher.directive";
 
 @NgModule({
   imports: [BrowserModule, FormsModule, ReactiveFormsModule],
-  declarations: [ProductComponent, PaAttrDirective, PaModel,
-    PaStructureDirective, PaIteratorDirective,
-    PaCellColor, PaCellColorSwitcher],
+  declarations: [ProductComponent, PaAttrDirective, PaModel, PaStructureDirective, PaIteratorDirective, PaCellColor, PaCellColorSwitcher],
   bootstrap: [ProductComponent]
 })
 export class AppModule {
